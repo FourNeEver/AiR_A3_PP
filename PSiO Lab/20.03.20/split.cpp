@@ -3,14 +3,14 @@
 #include <vector>
 
 
-std::vector<std::string> split(std::string sentence)
+std::vector<std::string> split(std::string sentence, char separator)
 {
 	
 	std::vector<std::string> words;
 	int begin = 0;
 	for (int i = 0; i < sentence.length() - 1; i++)
 	{
-		if (sentence.at(i) == 32)
+		if (sentence.at(i) == separator)
 		{
 			words.push_back(sentence.substr(begin, i - begin));
 			begin = i + 1;
@@ -32,8 +32,11 @@ void print(std::vector<std::string> const& input)
 int main()
 {
 	std::string word;
+	char sep;
 	std::cout << "Podaj wyrazenie: ";
 	std::getline(std::cin, word);
+	std::cout << "Podaj separator: ";
+	sep=getchar();
 
-	print(split(word));
+	print(split(word,sep));
 }
